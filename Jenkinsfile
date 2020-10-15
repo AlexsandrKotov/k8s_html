@@ -23,7 +23,7 @@ pipeline {
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
-                dir ('docker/toolbox') {
+                {
                 	sh 'docker build -t alexsandr/k8s_html:latest . '
                 }
             }
