@@ -18,9 +18,12 @@ pipeline { agent { label 'master'
                }
           }
     }
-      stage("create docker image") {
-         steps { echo "-------------------- start building image --------------"
-            sh 'docker push alexsandr/k8s_html:latest'
+      stage("push docker image") {
+         steps { 
+            echo "-------------------- start pushing image --------------"
+            sh """
+            docker push alexsandr/k8s_html:latest 
+            """
             }
         }
     }
