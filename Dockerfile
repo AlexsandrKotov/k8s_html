@@ -7,7 +7,7 @@ RUN yum -y install httpd httpd-tools
 # Install PHP
 #RUN yum -y install php
 
-COPY ./k8s_php/index.html  /var/www/html/index.html
+COPY index.html  /var/www/html/index.html
 
 EXPOSE 80
 
