@@ -1,6 +1,8 @@
 #!groovy
 // Run docker build
-pipeline { agent { label 'master'
+pipeline { 
+  agent { 
+  label 'master'
     }
     stages { 
       stage("create docker image") { 
