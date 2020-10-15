@@ -25,7 +25,7 @@ pipeline {
                 echo " ============== start building image =================="
                 
                 	sh 'docker build -t alexsandr/k8s_html:latest . '
-                }
+                
             }
         }
         stage("docker push") {
