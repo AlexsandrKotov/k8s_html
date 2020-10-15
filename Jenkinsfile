@@ -24,7 +24,7 @@ pipeline { agent { label 'master'
             sh """
             docker push alexsandr/k8s_html:latest 
             """
-            }
+            
         }
     }
 }
