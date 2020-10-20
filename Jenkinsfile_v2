@@ -1,37 +1,17 @@
 pipeline {
-
-  agent any
-
-  stages {
-
-      stage("Build image") {
+    agent any
+    stages {
+        stage('Build image') {
             steps {
+                echo 'Starting to build docker image'
+
                 script {
-                    myapp = docker.build("alexsandr/k8s_html:${env.BUILD_ID}")
+                    def customImage = docker.build("my-image:${env.BUILD_ID}")
+                    customImage.push()
                 }
             }
         }
-    
-      stage("Push image") {
-            steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-                            myapp.push("latest")
-                            myapp.push("${env.BUILD_ID}")
-                    }
-                }
-            }
-        }
-
-    
-    stage('Deploy App') {
-      steps {
-        script {
-          kubernetesDeploy(configs: "k8s_html.yaml", kubeconfigId: "mykubeconfig")
-        }
-      }
     }
-
-  }
-
 }
+
+
