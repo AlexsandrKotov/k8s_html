@@ -1,0 +1,19 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: k8shtml-deployment
+spec:
+  selector:
+    matchLabels:
+      app: k8shtml
+  replicas: 2 
+  template:
+    metadata:
+      labels:
+        app: k8shtml
+    spec:
+      containers:
+      - name: k8shtml
+        image: alexsandr/k8s_html
+        ports:
+        - containerPort: 80

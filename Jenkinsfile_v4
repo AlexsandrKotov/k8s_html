@@ -1,0 +1,43 @@
+pipeline {
+
+  agent any
+
+  stages {
+
+    stage('Checkout Source') {
+      steps {
+        git url:'https://github.com/AlexsandrKotov/k8s_html.git', branch:'master'
+      }
+    }
+    
+      stage("Build image") {
+            steps {
+                script {
+                    myapp = docker.build("alexsanr/k8s_html:${env.BUILD_ID}")
+                }
+            }
+        }
+    
+      stage("Push image") {
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                            myapp.push("latest")
+                            myapp.push("${env.BUILD_ID}")
+                    }
+                }
+            }
+        }
+
+    
+    stage('Deploy App') {
+      steps {
+        script {
+          kubernetesDeploy(configs: "k8s_html.yml", kubeconfigId: "mykubeconfig")
+        }
+      }
+    }
+
+  }
+
+}
