@@ -38,7 +38,7 @@ pipeline {
         stage("push k8s") {
             steps {
                 echo " =================push k8s====================="
-                    withCredentials([usernamePassword(credentialsId: 'my_pc',passwordVariable: 'PASSWORD')]) {
+                    withCredentials([usernamePassword(credentialsId: 'my_pass',passwordVariable: 'PASSWORD')]) {
                          sh 'ssh akotov@192.168.111.1 kubectl apply -f k8s_html'
                     }
                           
