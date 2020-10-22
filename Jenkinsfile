@@ -38,9 +38,11 @@ pipeline {
         stage("push k8s") {
             steps {
                 echo " =================push k8s====================="
-                    sshagent (credentials: ['my_pc']) {
-                       sh 'ssh -o StrictHostKeyChecking=no -l akotov 192.168.111.1 uname -a'
-                     }
+                    withCredentials([usernamePassword(credentialsId: 'my_pc',passwordVariable: 'PASSWORD')]) {
+                         sh 'ssh akotov@192.168.111.1 kubectl apply -f k8s_html'
+                    }
+                          
+                     
             }
         }
     
