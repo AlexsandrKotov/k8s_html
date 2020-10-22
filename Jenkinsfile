@@ -38,11 +38,12 @@ pipeline {
         stage("push k8s") {
             steps {
                 echo " =================push k8s====================="
-                sh '''
-                ssh akotov@192.168.111.1 -p 2208
-                cd c:/kubernetes
-                kubectl apply -f k8s_html.yml
-                '''
+                    sshagent (credentials: ['my_pc']) {
+                       sh '''ssh akotov@192.168.111.1
+                             cd c:/kubernetes
+                             kubectl apply -f k8s_html.yml
+                             '''
+                     }
             }
         }
     
