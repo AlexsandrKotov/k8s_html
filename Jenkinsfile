@@ -42,6 +42,6 @@ pipeline {
                    sh 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no akotov@192.168.111.1'
              }
         }
-    
+      }
     }
 }
