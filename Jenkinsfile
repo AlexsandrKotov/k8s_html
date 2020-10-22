@@ -33,7 +33,14 @@ pipeline {
                 sh '''
                 docker push alexsandr/k8s_html:latest
                 '''
-            }
+                   }
+
+             }
+        stage("Execute test command over SSH remote server"){
+                steps{
+                sh 'ssh akotov@192.168.111.1 ls -lrt'
+
+             }
         }
     
     }
