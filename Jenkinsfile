@@ -38,8 +38,8 @@ pipeline {
              }
         stage("Execute test command over SSH remote server"){
                 steps{
-                sh 'ssh akotov@192.168.111.1 ls -lrt'
-
+                   sshagent(['my_pc']) {  
+                   sh 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no akotov@192.168.111.1'
              }
         }
     
