@@ -39,7 +39,7 @@ pipeline {
             steps {
                 echo " =================push k8s====================="
                     sshagent (credentials: ['my_pc']) {
-                       sh '''ssh akotov@192.168.111.1
+                       sh '''ssh StrictHostKeyChecking=no akotov@192.168.111.1
                              cd c:/kubernetes
                              kubectl apply -f k8s_html.yml
                              '''
