@@ -1,16 +1,16 @@
 pipeline {
     agent any
     stages {
-        stage('Build image') {
-            steps {
-                echo 'Starting to build docker image'
+       stage('Deploy Patient App') {
+         steps {
+             withCredentials([
+                  string(credentialsId: 'my_kubernetes', variable: 'api_token')
+                  ]) {
+                   sh 'kubectl --token $api_token --server https://192.168.99.101:8443 --insecure-skip-tls-verify=true apply -f k8s_html.yaml '
+                     }
+               }
+           }
 
-                script {
-                    def customImage = docker.build("my-image:${env.BUILD_ID}")
-                    customImage.push()
-                }
-            }
-        }
     }
 }
 
