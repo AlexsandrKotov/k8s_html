@@ -3,12 +3,11 @@ pipeline {
     stages {
        stage('Deploy Patient App') {
          steps {
-             withCredentials([
-                  string(credentialsId: 'my_kubernetes', variable: 'api_token')
-                  ]) {
-                   sh 'kubectl --token $api_token --server https://192.168.99.101:8443 --insecure-skip-tls-verify=true apply -f k8s_html.yaml '
-                     }
-               }
+		kubeconfig(caCertificate: 'eyJhbGciOiJSUzI1NiIsImtpZCI6IlBlQzUxM3ViOFRKeEFjN1BJVUFEYWV2eHdKWGhCMnhpcWx5RFpHd1NIb28ifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImRlZmF1bHQtdG9rZW4teGpybDkiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGVmYXVsdCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjgxMzJmZWRjLTYzODgtNDQyOC04ODRlLTc0ODYzZjY2Y2U5ZSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRlZmF1bHQifQ.boVLBnoLTgX_p8YyDn8BFHQD084e8t8JCBQCR2zr3ydH0Iz1JhD4nlvk2O3OVcO-rh6ctsDUK06ErK_Ml6ZM0tiOMZhB8CkWUn4xMZvJpshAZGzKCkigzykNX11PVc95iyVnWtkriUqX8AEZfbeP7bw19uvnAKHmFysoIUDTj5twDbNFlGGk71BbgZr-4CLP4cpG57kX2pKT6juEIj2ZZldtJ3RgGrrnwPaXe6orWjOygieC9aSHV6pX7xusbLZWnTWzYIKcg1JISX', credentialsId: 'kubernetes', serverUrl: 'https://192.168.99.101:8443') {
+    // some block
+                }
+
+
            }
 
     }
