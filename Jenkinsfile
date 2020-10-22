@@ -35,17 +35,6 @@ pipeline {
                 '''
             }
         }
-         node {
-            def remote = [:]
-            remote.name = 'pclocal'
-            remote.host = '192.168.111.1'
-            remote.user = 'akotov'
-            remote.password = '8a35af5181b3'
-            remote.allowAnyHosts = true
-            stage('Remote SSH') {
-                sshCommand remote: remote, command: "ls -lrt"
-                 }
-            }    
     
     }
 }
