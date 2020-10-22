@@ -39,7 +39,7 @@ pipeline {
             steps {
                 echo " =================push k8s====================="
                     sshagent (credentials: ['my_pc']) {
-                       sh 'ssh -o StrictHostKeyChecking=no -l cloudbees 192.168.111.1 uname -a'
+                       sh 'ssh -o StrictHostKeyChecking=no -l akotov 192.168.111.1 uname -a'
                      }
             }
         }
