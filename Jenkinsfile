@@ -42,9 +42,8 @@ pipeline {
                    sh ''' 
                    ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -T akotov@192.168.111.1
                    pwd
-                   kubectl set image deployment/k8shtml-deployment k8shtml=alexsandr/k8s_html:latest
-                   kubectl rollout restart deployment/k8shtml-deployment'
-     	           '''                
+                   ./deploy.sh
+                   '''                
              }
         }
       }
