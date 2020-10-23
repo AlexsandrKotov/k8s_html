@@ -39,7 +39,7 @@ pipeline {
         stage("Execute test command over SSH remote server"){
                 steps{
                    sshagent(credentials: ['my_pc']) {  
-                   sh 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -l akotov 192.168.111.1 uname -a'
+                   sh 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -T akotov@192.168.111.1'
              }
         }
       }
