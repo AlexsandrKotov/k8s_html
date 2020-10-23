@@ -40,9 +40,8 @@ pipeline {
                 steps{
                    sshagent(credentials: ['my_pc']) {  
                    sh '''
-                   ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -T akotov@192.168.111.1
-                   ssh kubectl set image deployment/k8shtml-deployment k8shtml=alexsandr/k8s_html:latest
-                   ssh kubectl rollout restart deployment/k8shtml-deployment
+                   ssh akotov@192.168.111.1 kubectl set image deployment/k8shtml-deployment k8shtml=alexsandr/k8s_html:latest
+                   ssh akotov@192.168.111.1 kubectl rollout restart deployment/k8shtml-deployment
                    '''    
                    
                 }
